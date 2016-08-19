@@ -1,0 +1,31 @@
+{
+  "name": "static_server",
+  "version": "1.0.0",
+  "description": "Static server for http and client-side javascript of cloudy time machine.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack && node index.js",
+    "dev": "webpack-dev-server --content-base public"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "dnscache": "0.0.4",
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "http-proxy": "^1.14.0",
+    "morgan": "^1.7.0",
+    "shelljs": "^0.7.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-react": "^6.11.1",
+    "jquery": "^3.1.0",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "webpack": "^1.13.2"
+  },
+  "author": "Eric Hole",
+  "license": "MIT"
+}
