@@ -1,9 +1,10 @@
 {
   "name": "static_server",
   "version": "1.0.0",
-  "description": "Static server for http and client-side javascript of cloudy time machine.",
+  "description": "Static http server and client-side javascript for cloudy time machine.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "build": "webpack && node index.js",
     "dev": "webpack-dev-server --content-base public"
   },
