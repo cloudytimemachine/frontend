@@ -50,6 +50,6 @@ var CaptureDetailScreen = React.createClass({
   }
 });
 
-var captureURL = '/api/capture/' + window.location.pathname.split('/')[2];
+var captureURL = 'http://localhost:3001/api/capture/' + window.location.pathname.split('/')[2];
 ReactDOM.render(
   <CaptureDetailScreen url={captureURL} />, document.getElementById('capture'));

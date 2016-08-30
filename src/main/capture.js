@@ -9,7 +9,7 @@ var Capture = React.createClass({
         <td>{timeAgo}</td>
         <td>{this.props.href}</td>
         <td>{this.props.path}</td>
-        <td><a href={captureLink}><img src={this.props.originalImage} width="200px" /></a></td>
+        <td><a href={captureLink}><img src={this.props.thumb} width="200px" /></a></td>
       </tr>
       );
   }
