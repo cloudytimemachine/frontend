@@ -45,7 +45,7 @@ var CaptureTable = React.createClass({
     return(
       <div className="captureTable">
         <SearchForm onSearchSubmit={this.handleSearchSubmit} />
-        <QueueStatusBox url='http://localhost:3001/api/queue' pollInterval={2000} data={this.state.data}/>
+        <QueueStatusBox url='/api/queue' pollInterval={2000} data={this.state.data}/>
         <ul>
           <CaptureList data={this.state.data}/>
         </ul>
