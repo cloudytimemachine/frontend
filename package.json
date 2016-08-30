@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "build": "webpack && node index.js",
-    "dev": "webpack-dev-server --content-base public"
+    "dev": "webpack-dev-server --content-base public --history-api-fallback"
   },
   "dependencies": {
     "body-parser": "^1.15.2",

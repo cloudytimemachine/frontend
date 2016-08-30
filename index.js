@@ -5,7 +5,6 @@ dnscache = require('dnscache')({
   cachesize: 1000
 });
 
-var routes = require('./lib/routes');
 var port = process.env.PORT || 3005;
 
 var express = require('express');
@@ -18,10 +17,13 @@ var apiForwardingUrl = 'http://localhost:3001';
 
 var app = express();
 app.use(logger('dev'));
-app.use('/', express.static(path.join(__dirname, 'public')));
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
-app.set('views', __dirname + '/public');
+
+app.use(express.static(__dirname + '/public'));
+
+app.get('*', function (req, res) {
+  res.sendFile(__dirname + '/public/index.html');
+});
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -31,7 +33,6 @@ app.use(function (error, request, response, next) {
 });
 
 var apiProxy = httpProxy.createProxyServer();
-app.use(routes);
 
 app.all('/api/*', function(req, res) {
   console.log('Forwarding API call to ');
