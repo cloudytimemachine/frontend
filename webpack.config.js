@@ -1,12 +1,9 @@
 module.exports = {
     context: __dirname,
-     entry: {
-        main: './src/main/main.js',
-        capture:  './src/capture/capture.js'
-     },
+     entry: './modules/index.js',
      output: {
          path: __dirname+'/public',
-         filename: 'app.[name].js',
+         filename: 'bundle.js',
      },
      devServer: {
         port: 8008,

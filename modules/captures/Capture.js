@@ -1,6 +1,9 @@
-var React = require('react');
+import React from 'react'
+import { Link } from 'react-router'
 
-var Capture = React.createClass({
+var moment = require('moment')
+
+export default React.createClass({
   render: function() {
     var timeAgo =  moment(this.props.createdAt).fromNow();
     var captureLink = '/capture/' + this.props.id;
@@ -9,9 +12,8 @@ var Capture = React.createClass({
         <td>{timeAgo}</td>
         <td>{this.props.href}</td>
         <td>{this.props.path}</td>
-        <td><a href={captureLink}><img src={this.props.thumb} width="200px" /></a></td>
+        <td><Link to={captureLink}><img src={this.props.thumb} width="200px"/></Link></td>
       </tr>
-      );
+      )
   }
-});
-module.exports = Capture;
+})

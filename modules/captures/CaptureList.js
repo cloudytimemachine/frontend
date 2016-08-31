@@ -1,11 +1,11 @@
-var React = require('react');
-var Capture = require('./capture')
+import React from 'react'
+import Capture from './Capture'
 
-var CaptureList = React.createClass({
+export default React.createClass({
   render: function() {
     var captureNodes = this.props.data.map(function(capture) {
       return (
-          <Capture id={capture.id} href={capture.href} createdAt={capture.createdAt} path={capture.path} thumb={capture.thumb}></Capture>
+        <Capture key={capture.id} id={capture.id} href={capture.href} createdAt={capture.createdAt} path={capture.path} thumb={capture.thumb}></Capture>
         );
     });
     return (
@@ -21,13 +21,11 @@ var CaptureList = React.createClass({
         </tr>
         </thead>
         <tbody>
-        {captureNodes}
+          {captureNodes}
         </tbody>
       </table>
       </div>
       </div>
     );
   }
-});
-
-module.exports = CaptureList;
+})

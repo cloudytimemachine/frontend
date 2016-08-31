@@ -1,6 +1,7 @@
-var React = require('react');
+import React from 'react'
+import $ from 'jquery'
 
-var SearchForm = React.createClass({
+export default React.createClass({
   getInitialState: function() {
     return { url: '' };
   },
@@ -8,13 +9,14 @@ var SearchForm = React.createClass({
     this.setState({ url: e.target.value });
   },
   handleSubmit: function(e) {
-    console.log('here');
     e.preventDefault();
     var url = this.state.url.trim();
     if (!url) {
       return;
     }
-    this.props.onSearchSubmit({ url: url});
+    var apiUrl = apiForwardingUrl + '/api/captures'
+    console.log('Requesting capture of ' + url + ' to ' + apiUrl);
+    $.post(apiUrl, { url: url });
     this.setState({ url: '' });
   },
   render: function() {
@@ -34,5 +36,3 @@ var SearchForm = React.createClass({
     );
   }
 });
-
-module.exports = SearchForm;
