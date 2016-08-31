@@ -19,7 +19,7 @@ export default React.createClass({
   loadDetailsFromServer: function() {
    if (!this.isMounted())
       return;
-    var url = apiForwardingUrl + '/api/capture/' + this.props.id + '?'
+    var url = 'http://localhost:3001/api/capture/' + this.props.id + '?'
     //console.log(url);
     $.getJSON(url,function(json){
       //console.log(json);

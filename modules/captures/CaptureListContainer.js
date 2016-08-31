@@ -7,7 +7,7 @@ export default React.createClass({
   loadCapturesFromServer: function() {
     if (!this.isMounted())
       return;
-    var url = apiForwardingUrl + '/api/captures?'
+    var url = 'http://localhost:3001/api/captures?'
     $.getJSON(url,function(json){
       console.log(json);
       this.setState({data: json['captures']});

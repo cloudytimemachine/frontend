@@ -15,8 +15,8 @@ var path = require('path');
 var common = require('./lib/common');
 var config = common.config();
 
-var apiForwardingUrl = config.api_endpoint;
-console.log("API Forwarding URL: " + apiForwardingUrl);
+process.env.apiForwardingUrl = config.api_endpoint;
+console.log("API Forwarding URL: " + process.env.apiForwardingUrl);
 
 var app = express();
 app.use(logger('dev'));

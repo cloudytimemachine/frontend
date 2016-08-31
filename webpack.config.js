@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
     context: __dirname,
      entry: './modules/index.js',
@@ -23,5 +25,5 @@ module.exports = {
               presets:['react','es2015']
              }
          }]
-     }
- }
+     },
+}
