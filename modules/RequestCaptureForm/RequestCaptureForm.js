@@ -14,8 +14,8 @@ export default React.createClass({
     if (!url) {
       return;
     }
-    var apiUrl = 'http://localhost:3001/api/captures'
-    console.log(apiUrl);
+    var apiUrl = apiForwardingUrl + '/api/captures'
+    console.log('Requesting capture of ' + url + ' to ' + apiUrl);
     $.post(apiUrl, { url: url });
     this.setState({ url: '' });
   },

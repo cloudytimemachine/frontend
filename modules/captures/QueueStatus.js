@@ -12,7 +12,7 @@ export default React.createClass({
   loadQueueLen: function() {
     if (!this.isMounted())
       return;
-    const url = 'http://localhost:3001/api/queue?'
+    const url = apiForwardingUrl + '/api/queue?'
     $.getJSON(url,function(json){
       this.setState({data: json});
     }.bind(this));
