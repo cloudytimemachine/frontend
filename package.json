@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "build": "webpack && node index.js",
-    "dev": "webpack-dev-server --content-base public --history-api-fallback --define apiForwardingUrl='\"http://localhost:3001\"'"
+    "dev": "webpack-dev-server --content-base public --history-api-fallback"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -28,6 +28,7 @@
     "jquery": "^3.1.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
+    "react-share": "^1.9.3",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.0"
   },

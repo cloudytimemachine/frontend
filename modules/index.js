@@ -5,13 +5,13 @@ import App from './App'
 import About from './About'
 import Captures from './Captures'
 import CaptureDetails from './CaptureDetails'
+import Home from './Home'
 
 render((
   <Router history={browserHistory}>
-    <Route path="/" component={App}>
-      <Route path="/about" component={About}/>
-      <Route path="/captures" component={Captures}/>
-      <Route path="/capture/:captureID" component={CaptureDetails} />
+    <Route component={App}>
+      <Route component={Home} path="/" />
+      <Route component={Captures} path="/captures" />
     </Route>
   </Router>
 ), document.getElementById('app'))
