@@ -4,6 +4,7 @@ import About from './App/About'
 import Footer from './App/Footer'
 import SearchBox from './App/SearchBox'
 import RequestCaptureBox from './App/RequestCaptureBox'
+import { Link } from 'react-router'
 
 export default React.createClass({
   render() {

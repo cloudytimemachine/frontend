@@ -6,11 +6,11 @@ export default React.createClass({
   render() {
     return (
       <div>
-      <nav className="navbar navbar-default">
+        <nav className="navbar navbar-inverse navbar-fixed-top">
           <div className="container-fluid">
           <div className="navbar-header">
-          <a className="navbar-brand" href="/">Cloudy Time Machine</a>
-        </div>
+            <a className="navbar-brand" href="/">Cloudy Time Machine</a>
+          </div> {/*navbar-header*/}
             <ul className="nav navbar-nav">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/captures">Captures</Link></li>
@@ -18,8 +18,8 @@ export default React.createClass({
             </ul>
             <div className="pull-right">
               <SearchBox />
-            </div>
-          </div>
+            </div>{/*pull-right*/}
+          </div> {/*container-fluid*/}
         </nav>
       </div>
     )
