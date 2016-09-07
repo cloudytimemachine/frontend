@@ -17,17 +17,17 @@ spec:
           imagePullPolicy: IfNotPresent
           image: quay.io/cloudytimemachine/frontend:latest
           ports:
-            - containerPort: 3000
+            - containerPort: 80
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /healthz
-              port: 3000
+              path: /
+              port: 8080
             initialDelaySeconds: 5
             timeoutSeconds: 5
           readinessProbe:
             httpGet:
-              path: /healthz
-              port: 3000
+              path: /=
+              port: 8080
             initialDelaySeconds: 2
             timeoutSeconds: 5
