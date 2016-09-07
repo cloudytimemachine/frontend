@@ -1,0 +1,33 @@
+frontendVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      imagePullSecrets:
+      - name: cloudytimemachine-kubernetes-pull-secret
+      containers:
+        - name: frontend
+          imagePullPolicy: IfNotPresent
+          image: quay.io/cloudytimemachine/frontend:latest
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+            initialDelaySeconds: 2
+            timeoutSeconds: 5

@@ -1,0 +1,6 @@
+.git
+deploy
+node_modules
+script
+*.log
+*~
