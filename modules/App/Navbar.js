@@ -7,7 +7,7 @@ export default React.createClass({
     return (
       <div>
         <nav className="navbar navbar-inverse navbar-fixed-top">
-          <div className="container-fluid">
+
           <div className="navbar-header">
             <a className="navbar-brand" href="/">Cloudy Time Machine</a>
           </div> {/*navbar-header*/}
@@ -19,7 +19,7 @@ export default React.createClass({
             <div className="pull-right">
               <SearchBox />
             </div>{/*pull-right*/}
-          </div> {/*container-fluid*/}
+
         </nav>
       </div>
     )

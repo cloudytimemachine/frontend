@@ -11,7 +11,7 @@ render((
   <Router history={browserHistory}>
     <Route component={App}>
       <Route component={Home} path="/" />
-      <Route component={SearchResults} path="/captures/:query" />
+      <Route component={SearchResults} path="/captures/*" />
     </Route>
   </Router>
-), document.getElementById('app'))
+), document.getElementById('app'));

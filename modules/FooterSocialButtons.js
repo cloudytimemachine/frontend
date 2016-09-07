@@ -16,8 +16,8 @@ const GooglePlusIcon = generateShareIcon('google');
 
 export default React.createClass({
   render() {
-    const shareUrl = 'http://github.com';
-    const title = 'GitHub';
+    const shareUrl = window.location.href;
+    const title = 'Cloudy Time Machine: ' + window.location.title;
 
     return (
       <div className="text-muted">

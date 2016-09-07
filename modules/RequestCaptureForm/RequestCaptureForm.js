@@ -1,14 +1,19 @@
 import React from 'react'
+import { browserHistory } from 'react-router'
 import $ from 'jquery'
 
 export default React.createClass({
   getInitialState: function() {
-    return { url: '' };
+    return { url: '', isPending: false };
+  },
+  contextTypes: {
+    router: React.PropTypes.object
   },
   handleURLChange: function(e) {
     this.setState({ url: e.target.value });
   },
   handleSubmit: function(e) {
+    this.setState({ isPending: true });
     e.preventDefault();
     var url = this.state.url.trim();
     if (!url) {
@@ -18,6 +23,14 @@ export default React.createClass({
     console.log('Requesting capture of ' + url + ' to ' + apiUrl);
     $.post(apiUrl, { url: url });
     this.setState({ url: '' });
+    var pushHistory = function() {
+      browserHistory.push({ pathname: '/captures/' + url });
+    }
+    setTimeout(pushHistory, 3000);
+  },
+  renderPending: function() {
+    if (this.state.isPending)
+      return (<h5>Processing your request...</h5>);
   },
   render: function() {
     return(
@@ -35,6 +48,7 @@ export default React.createClass({
           <button className="btn btn-default" type="submit"><i className="glyphicon glyphicon-download"> Submit</i></button>
         </div> {/*input-group-btn*/}
         </div> {/*form-group*/}
+        {this.renderPending()}
       </form>
     );
   }

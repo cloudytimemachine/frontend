@@ -30,6 +30,10 @@ body > .container {
   margin: 20px 0;
 }
 
+.container-fluid {
+  width: 80%;
+}
+
 .footer > .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -37,4 +41,9 @@ body > .container {
 
 code {
   font-size: 80%;
+}
+
+.alert {
+  margin: 0 auto;
+  width: 50%;
 }

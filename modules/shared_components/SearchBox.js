@@ -19,7 +19,8 @@ export default React.createClass({
     }
     this.setState({ url: '' });
     this.context.router.push({
-        pathname: '/captures/'+this.refs.q.value
+        pathname: '/captures/'+this.refs.q.value,
+        state: ({ search: true })
       })
   },
   render() {
@@ -41,4 +42,4 @@ export default React.createClass({
       </form>
     )
   }
-})
+});
