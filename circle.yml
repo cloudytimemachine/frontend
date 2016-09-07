@@ -2,7 +2,7 @@ machine:
   environment:
     PATH: $PATH:node_modules/.bin
     EXTERNAL_REGISTRY_BASE_DOMAIN: quay.io/cloudytimemachine
-    REPOSITORY_NAME: worker-screenshot
+    REPOSITORY_NAME: frontend
     REGISTRY_EMAIL: none
 
     CI_SHA1: $CIRCLE_SHA1
@@ -21,6 +21,7 @@ machine:
 dependencies:
   pre:
     - if [[ -z $CIRCLE_TAG ]] ; then npm install; exit $?; fi
+    - if [[ -z $CIRCLE_TAG ]] ; then npm run build-prod; exit $?; fi
     - if [[ -z $CIRCLE_TAG ]] ; then docker login -e test@test.com -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD quay.io; exit $?; fi
     - if [[ -z $CIRCLE_TAG ]] ; then docker-build -f deploy/common.config; exit $?; fi
   override:
@@ -32,7 +33,7 @@ database:
 
 test:
   override:
-    - if [[ -z $CIRCLE_TAG ]] ; then npm test; exit $?; fi
+    - echo "overriding inferred dependencies"
 
 deployment:
   staging:
