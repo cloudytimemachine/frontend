@@ -33,7 +33,7 @@ database:
 
 test:
   override:
-    - echo "overriding inferred dependencies"
+    - if [[ -z $CIRCLE_TAG ]] ; then npm test; exit $?; fi
 
 deployment:
   staging:

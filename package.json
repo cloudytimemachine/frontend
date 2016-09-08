@@ -7,7 +7,8 @@
     "start": "node index.js",
     "build": "webpack && node index.js",
     "build-prod": "webpack",
-    "dev": "webpack-dev-server --content-base public --history-api-fallback --define apiForwardingUrl='\"http://localhost:3001\"'"
+    "dev": "webpack-dev-server --content-base public --history-api-fallback --define apiForwardingUrl='\"http://localhost:3001\"'",
+    "test": "mocha test/helpers/browser.js $(find test -name '*.js')"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -16,6 +17,7 @@
     "http-proxy": "^1.14.0",
     "moment": "^2.14.1",
     "morgan": "^1.7.0",
+    "nuka-carousel": "^2.0.3",
     "react-bootstrap": "^0.30.3",
     "react-router": "^2.7.0",
     "react-router-bootstrap": "^0.23.1",
@@ -26,11 +28,20 @@
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.13.2",
     "babel-preset-react": "^6.11.1",
+    "babel-register": "^6.14.0",
     "babel-runtime": "^6.11.6",
+    "chai": "^3.5.0",
+    "enzyme": "^2.4.1",
     "jquery": "^3.1.0",
+    "jsdom": "^9.5.0",
+    "json-loader": "^0.5.4",
     "k8s-scripts": "^2.1.1",
+    "mocha": "^3.0.2",
     "react": "^15.3.0",
+    "react-addons-test-utils": "^15.3.1",
     "react-dom": "^15.3.0",
+    "react-hot-loader": "^3.0.0-beta.3",
+    "react-share": "^1.9.3",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.0"
   },

@@ -4,14 +4,14 @@ import { Router, Route, browserHistory } from 'react-router'
 import App from './App'
 import About from './About'
 import Captures from './Captures'
-import CaptureDetails from './CaptureDetails'
+import SearchResults from './SearchResults'
+import Home from './Home'
 
 render((
   <Router history={browserHistory}>
-    <Route path="/" component={App}>
-      <Route path="/about" component={About}/>
-      <Route path="/captures" component={Captures}/>
-      <Route path="/capture/:captureID" component={CaptureDetails} />
+    <Route component={App}>
+      <Route component={Home} path="/" />
+      <Route component={SearchResults} path="/captures/*" />
     </Route>
   </Router>
-), document.getElementById('app'))
+), document.getElementById('app'));
