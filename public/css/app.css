@@ -48,3 +48,13 @@ code {
   width: 50%;
 }
 
+fieldset > * {
+    vertical-align: middle;
+}
+
+.leftlabel, .rightlabel {
+    display: inline-block;
+    width: 50px;
+    padding: 2px;
+    text-align: center;
+}

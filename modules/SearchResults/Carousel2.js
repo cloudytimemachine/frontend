@@ -6,7 +6,18 @@ import Button from 'react-bootstrap'
 export default React.createClass({
   mixins: [Carousel.ControllerMixin],
   getInitialState() {
-    return { slideIndex: 0, sliderVal: 0 }; },
+    let sliderMin = 0;
+    let length = this.props.results.length;
+    let sliderMax = length-1;
+    let leftlabel = moment(this.props.results[0].createdAt).fromNow();
+    let rightlabel = moment(this.props.results[length-1].createdAt).fromNow();
+    return {  slideIndex: 0,
+              sliderVal: 0,
+              sliderMin: sliderMin,
+              sliderMax: sliderMax,
+              leftLabel: leftlabel,
+              rightLabel: rightlabel  };
+  },
   setSliderState(val) {
     this.setState({sliderVal: val});
     //console.log("setting sliderState: "+ val);
@@ -47,7 +58,13 @@ export default React.createClass({
       <div className="container-fluid">
         <div className="row content">
           <div className="col-sm-9">
-          <input type="range" min="0" max="7" value={this.state.sliderVal} onChange={(e)=>this.handleChange(e)}/>
+          <fieldset>
+
+            <input type="range" min={this.state.sliderMin} max={this.state.sliderMax} value={this.state.sliderVal} onChange={(e)=>this.handleChange(e)}/>
+          <label className="leftlabel pull-left">{this.state.leftLabel}</label>
+          <label className="rightlabel pull-right">{this.state.rightLabel}</label>
+          </fieldset>
+
             <Carousel
               ref="carousel"
               decorators={Decorators}
