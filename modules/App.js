@@ -15,7 +15,7 @@ export default React.createClass({
               <p className="text-muted">© Cloudy Time Machine</p>
             </div>
             <div className="col-sm-4 pull-right">
-              <FooterSocialButtons className="pull-right" />
+              <FooterSocialButtons className="row content" />
             </div>
             </div>
         </footer>

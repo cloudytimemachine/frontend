@@ -20,11 +20,11 @@ export default React.createClass({
     const title = 'Cloudy Time Machine: ' + window.location.title;
 
     return (
-      <div className="text-muted">
+      <div className="row content text-muted">
           <FacebookShareButton
             url={shareUrl}
             title={title}
-            className="pull-right">
+            className="pull-left">
             <FacebookIcon
               size={32}
               round />
@@ -33,7 +33,7 @@ export default React.createClass({
           <TwitterShareButton
             url={shareUrl}
             title={title}
-            className="pull-right">
+            className="pull-left">
             <TwitterIcon
               size={32}
               round />
@@ -41,7 +41,7 @@ export default React.createClass({
 
           <GooglePlusShareButton
             url={shareUrl}
-            className="pull-right">
+            className="pull-left">
             <GooglePlusIcon
               size={32}
               round />

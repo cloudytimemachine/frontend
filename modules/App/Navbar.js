@@ -13,7 +13,7 @@ export default React.createClass({
           </div> {/*navbar-header*/}
             <ul className="nav navbar-nav">
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/captures">Captures</Link></li>
+              <li><Link to="#">Captures</Link></li>
               <li><Link to="/about">About</Link></li>
             </ul>
             <div className="pull-right">

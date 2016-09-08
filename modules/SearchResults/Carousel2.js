@@ -22,12 +22,27 @@ export default React.createClass({
     }
     this.setSliderState(newSlider);
   },
+  getMetaData() {
+    let data = this.props.results[this.state.sliderVal];
+    let timeAgo =  moment(data.createdAt).fromNow();
+    return ( <div>
+                <h3> {data.domain} : {timeAgo}</h3>
+                <h4>Capture ID: {data.id} </h4>
+              </div> );
+  },
   render() {
     var carouselNodes = this.props.results.map(function(result) {
-      var timeAgo =  moment(result.createdAt).fromNow();
-      var caption = result.domain + " " + timeAgo;
-      return ( <img src={result.originalImage} /> );
+      return ( <img key={result.id} src={result.originalImage} /> );
     });
+    var Decorators = [{
+      component: React.createClass({
+        render() {
+          return ( null );
+        }
+      }),
+
+    }];
+
     return (
       <div className="container-fluid">
         <div className="row content">
@@ -35,15 +50,15 @@ export default React.createClass({
           <input type="range" min="0" max="7" value={this.state.sliderVal} onChange={(e)=>this.handleChange(e)}/>
             <Carousel
               ref="carousel"
+              decorators={Decorators}
               data={this.setCarouselData.bind(this, 'carousel')}
               slideIndex={this.state.slideIndex}
-              afterSlide={newSlideIndex => this.setState({ slideIndex: newSlideIndex })}
-              dragging={true} >
+              afterSlide={newSlideIndex => this.setState({ slideIndex: newSlideIndex })}>
               {carouselNodes}
             </Carousel>
           </div>
           <div className="col-sm-3">
-            <h3>This is meta data</h3>
+            {this.getMetaData()}
           </div>
         </div> {/*row content*/}
       </div>
