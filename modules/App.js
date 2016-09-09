@@ -12,7 +12,7 @@ export default React.createClass({
         <footer className="footer">
           <div className="container">
             <div className="col-sm-4 pull-left">
-              <p className="text-muted">© Cloudy Time Machine</p>
+              <p className="text-muted">&copy; Ross Kukulinski, Eric Hole and <a href="http://github.com/cloudytimemachine">Contributors</a></p>
             </div>
             <div className="col-sm-4 pull-right">
               <FooterSocialButtons className="row content" />
