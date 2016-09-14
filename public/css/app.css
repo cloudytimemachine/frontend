@@ -58,3 +58,34 @@ fieldset > * {
     padding: 2px;
     text-align: center;
 }
+
+.social_col i {
+    color: #333;
+    font-size: 15px;
+    line-height: 2em;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.social_col a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    color: #337ab7;
+    line-height: 1em;
+    text-align: center;
+    background: #337ab7;
+    margin: 10px 10px 0 0;
+    -webkit-transition: background 200ms ease-out;
+    -moz-transition: background 200ms ease-out;
+    -ms-transition: background 200ms ease-out;
+    -o-transition: background 200ms ease-out;
+    transition: background 200ms ease-out;
+}

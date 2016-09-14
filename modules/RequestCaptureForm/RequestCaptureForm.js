@@ -45,7 +45,7 @@ export default React.createClass({
           name="q"
         />
         <div className="input-group-btn">
-          <button className="btn btn-default" type="submit"><i className="glyphicon glyphicon-download"> Submit</i></button>
+          <button className="btn btn-default" type="submit"><i className="fa fa-cloud-download" aria-hidden="true"></i></button>
         </div> {/*input-group-btn*/}
         </div> {/*form-group*/}
         {this.renderPending()}
