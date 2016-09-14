@@ -1,52 +1,19 @@
 import React from 'react'
-import {
-  ShareButtons,
-  generateShareIcon,
-} from 'react-share';
-
-const {
-  FacebookShareButton,
-  GooglePlusShareButton,
-  TwitterShareButton,
-} = ShareButtons;
-
-const FacebookIcon = generateShareIcon('facebook');
-const TwitterIcon = generateShareIcon('twitter');
-const GooglePlusIcon = generateShareIcon('google');
 
 export default React.createClass({
   render() {
     const shareUrl = window.location.href;
-    const title = 'Cloudy Time Machine: ' + window.location.title;
+    const title = document.title;
 
+    const facebookUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + shareUrl;
+    const twitterUrl = 'http://twitter.com/share?text='+ escape(title)+ '&url=' + shareUrl;
+    const pinterestUrl = 'http://pinterest.com/pin/create/button/?url='+ shareUrl +'&description=' + escape(title);
     return (
-      <div className="row content text-muted">
-          <FacebookShareButton
-            url={shareUrl}
-            title={title}
-            className="pull-left">
-            <FacebookIcon
-              size={32}
-              round />
-          </FacebookShareButton>
-
-          <TwitterShareButton
-            url={shareUrl}
-            title={title}
-            className="pull-left">
-            <TwitterIcon
-              size={32}
-              round />
-          </TwitterShareButton>
-
-          <GooglePlusShareButton
-            url={shareUrl}
-            className="pull-left">
-            <GooglePlusIcon
-              size={32}
-              round />
-          </GooglePlusShareButton>
-        </div>
+      <div className="social_col">
+        <a aria-label="facebook" href={facebookUrl} target="_blank"><i aria-hidden="true" className="fa fa-facebook"></i></a>
+        <a aria-label="twitter" href={twitterUrl} target="_blank"><i aria-hidden="true" className="fa fa-twitter"></i></a>
+        <a aria-label="pinterest" href={pinterestUrl} target="_blank"><i aria-hidden="true" className="fa fa-pinterest-p"></i></a>
+      </div>
     );
   },
 });
