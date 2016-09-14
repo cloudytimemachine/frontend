@@ -33,11 +33,6 @@ export default React.createClass({
     }
     this.setSliderState(newSlider);
   },
-  componentDidMount() {
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize'));
-    }, 0);
-  },
   getMetaData() {
     let data = this.props.results[this.state.sliderVal];
     let timeAgo =  moment(data.createdAt).fromNow();
@@ -48,7 +43,7 @@ export default React.createClass({
   },
   render() {
     var carouselNodes = this.props.results.map(function(result) {
-      return ( <img key={result.id} src={result.originalImage} /> );
+      return ( <img key={result.id} src={result.originalImage} onLoad={() => {window.dispatchEvent(new Event('resize'));}} /> );
     });
     var Decorators = [{
       component: React.createClass({
