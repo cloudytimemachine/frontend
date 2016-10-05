@@ -1,6 +1,6 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
-import $ from 'jquery'
+import request from 'superagent'
 
 export default React.createClass({
   getInitialState: function() {
@@ -13,20 +13,32 @@ export default React.createClass({
     this.setState({ url: e.target.value });
   },
   handleSubmit: function(e) {
-    this.setState({ isPending: true });
     e.preventDefault();
     var url = this.state.url.trim();
     if (!url) {
       return;
     }
-    var apiUrl = '/api/captures'
+    var apiUrl = '/api/snapshots'
     console.log('Requesting capture of ' + url + ' to ' + apiUrl);
-    $.post(apiUrl, { url: url });
+
+    request
+      .post(apiUrl)
+      .set('Content-Type', 'application/json')
+      .send(JSON.stringify({requestedUrl:url}))
+      .end(function(err, res) {
+        console.log(res);
+        if (res.statusCode != 200) {
+          console.log('Invalid request. Something has gone wrong.');
+        } else {
+          this.setState({ isPending: true });
+          var pushHistory = function() {
+            browserHistory.push({ pathname: '/captures/' + url });
+          }
+          setTimeout(pushHistory, 3000);
+        }
+      });
+
     this.setState({ url: '' });
-    var pushHistory = function() {
-      browserHistory.push({ pathname: '/captures/' + url });
-    }
-    setTimeout(pushHistory, 3000);
   },
   renderPending: function() {
     if (this.state.isPending)
