@@ -25,16 +25,17 @@ export default React.createClass({
       .post(apiUrl)
       .set('Content-Type', 'application/json')
       .send(JSON.stringify({requestedUrl:url}))
-      .end(function(err, res) {
-        console.log(res);
+      .end((err, res) => {
+        console.log(res.body.id);
         if (res.statusCode != 200) {
           console.log('Invalid request. Something has gone wrong.');
         } else {
           this.setState({ isPending: true });
           var pushHistory = function() {
-            browserHistory.push({ pathname: '/captures/' + url });
+            var snapshotId = res.body.id;
+            browserHistory.push({ pathname: '/snapshots/' + snapshotId });
           }
-          setTimeout(pushHistory, 3000);
+          setTimeout(pushHistory, 5000);
         }
       });
 

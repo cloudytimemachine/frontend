@@ -1,6 +1,7 @@
 import React from 'react'
-import $ from 'jquery'
+import request from 'superagent'
 import moment from 'moment'
+
 
 const CaptureMetaInformation = React.createClass({
   render: function() {
@@ -17,14 +18,14 @@ const CaptureMetaInformation = React.createClass({
 
 export default React.createClass({
   loadDetailsFromServer: function() {
-   if (!this.isMounted())
-      return;
-    var url = 'http://localhost:3001/api/capture/' + this.props.id + '?'
-    //console.log(url);
-    $.getJSON(url,function(json){
-      //console.log(json);
-      this.setState({data: json['capture']});
-    }.bind(this));
+    var url = '/api/snapshots/' + this.props.id
+    request
+      .get(url)
+      .set('Content-Type', 'application/json')
+      .end((err, res) => {
+        console.log(res.body);
+        this.setState({data: res.body})
+      });
   },
   getInitialState: function() {
     return { data: [] };
