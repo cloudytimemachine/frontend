@@ -28,14 +28,17 @@ class ProcessingScreen extends React.Component {
     super(props);
   }
 
-
   render() {
-    const spinnerSwitcher = () => {
-      console.log('snapshotStatus:' + this.props.snapshotStatus);
-      //if (this.props.snapshotStatus === 'PENDING')
-        return <div><h1>processing</h1><img src="images/spin.gif" alt="Processing..." /></div>
+    var spinnerSwitcher = () => {
+      console.log(this.props);
+      if (this.props.snapshotStatus != 'SUCCESSFUL')
+        return (<div className="processing-screen">
+                  <img src="/images/gears.svg" alt="Processing..." />
+                  <h3>Processing your snapshot...</h3>
+                </div>
+          );
     }
-    return <div>{spinnerSwitcher}</div>;
+    return <div>{spinnerSwitcher()}</div>;
   }
 };
 
@@ -46,24 +49,24 @@ export default React.createClass({
       .get(url)
       .set('Content-Type', 'application/json')
       .end((err, res) => {
-        console.log(res.body);
+        console.log(res);
         if (res.body.status == 'SUCCESSFUL') {
           this.setState({data: res.body})
-          this.setState({snapshotStatus: 'SUCCESSFUL'})
+          this.setState({snapshotStatus: 'SUCCESSFUL'});
         }
       });
   },
   getInitialState: function() {
-    return { data: [], snapshotStatus: 'PENDING' };
+    return { data: [] };
   },
   componentDidMount: function() {
     this.loadDetailsFromServer();
-    var interval = setInterval(function() {
-      this.loadDetailsFromServer;
-      console.log(this.state);
-      if (this.state.snapshotStatus != 'PENDING') {
-          clearInterval(interval);
+    var x = setInterval(() => {
+      this.loadDetailsFromServer();
+      if (this.state.snapshotStatus=='SUCCESSFUL') {
+        clearInterval(x);
       }
+      console.log(this.state);
     }, 1000);
   },
   render: function() {

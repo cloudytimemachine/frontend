@@ -6,7 +6,7 @@ import SearchBox from './App/SearchBox'
 import RequestCaptureBox from './App/RequestCaptureBox'
 import { Link } from 'react-router'
 
-export default React.createClass({
+class Home extends React.Component {
   render() {
     return (
         <div className="container-fluid">
@@ -31,4 +31,6 @@ export default React.createClass({
         </div>
     )
   }
-})
+}
+
+export default Home;

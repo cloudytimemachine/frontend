@@ -15,7 +15,7 @@ body {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
-  background-color: #333;
+  /*background-color: #333;*/
 }
 
 
@@ -59,8 +59,12 @@ fieldset > * {
     text-align: center;
 }
 
+.social_col {
+    margin-left: 150px;
+}
+
 .social_col i {
-    color: #333;
+    color: #FFFFFF;
     font-size: 15px;
     line-height: 2em;
 }
@@ -89,3 +93,19 @@ fieldset > * {
     -o-transition: background 200ms ease-out;
     transition: background 200ms ease-out;
 }
+
+
+/* Capture Details
+-------------------------------------------------- */
+
+/* Processing Status
+-------------------------------------------------- */
+
+.processing-screen {
+  text-align: center;
+}
+.processing-screen img {
+  display: block;
+  margin: 0 auto;
+}
+

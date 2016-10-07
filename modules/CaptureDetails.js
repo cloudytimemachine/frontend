@@ -1,7 +1,7 @@
 import React from 'react'
 import CaptureDetailsContainer from './CaptureDetailsContainer/CaptureDetailsContainer'
 
-export default React.createClass({
+class CaptureDetails extends React.Component{
   render() {
     return (
       <div>
@@ -10,4 +10,6 @@ export default React.createClass({
       </div>
     )
   }
-})
+}
+
+export default CaptureDetails;
