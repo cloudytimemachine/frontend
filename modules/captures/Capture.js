@@ -17,7 +17,7 @@ export default React.createClass({
     const timeAgo =  moment(capture.createdAt).fromNow();
 
     console.log(capture.thumbnailImage);
-    const captureLink = API_URL() + '/snapshots/'+capture.id;
+    const captureLink = '/snapshots/'+capture.id;
     console.log(captureLink);
     return(
       <tr className="capture">
