@@ -6,21 +6,27 @@ The CTM Frontend Service is the web interface for the CTM project. It provides a
 
 ## Development Enviroment Setup
 
+### Install required software:
+  * nodejs
+  * redis
+  * rethinkdb
 
+### To interact with the deployment cluster you will also need to install:
+  * Docker
+  * Google Cloud SDK
+  * kubectl
+  * And contact [Ross](@rosskukulinski) for access to the credentials
 
+### Getting started
 
+Clone this repo: `https://github.com/cloudytimemachine/frontend.git`
 
-## HTTP API
+`cd frontend`
 
-### GET /version
-Returns the current version string (from package.json)
+`npm install`
 
-### GET /healthz
-Returns 200 with no content if healthy
-Returns 500 with error message if not healthy
+`npm run dev`
 
-### GET /?url=https://github.com/rosskukulinski
+Open Chrome and visit `http://localhost:8008/webpack-dev-server/` . This takes care of building the bundle and runs a local development server. The frontend service is served as a static site in production.
 
-Requests a new screenshot of the specified page.  The png image
-is uploaded to Google Storage Engine and the public URL is returned
-along with the timestamp.
+Contact [Eric](@geojaz) for any questions about configuring dev environment.
