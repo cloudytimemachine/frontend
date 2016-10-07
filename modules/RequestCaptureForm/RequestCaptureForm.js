@@ -36,21 +36,13 @@ export default React.createClass({
         console.log(res.body.id);
         if (res.statusCode != 200) {
           console.log('Invalid request. Something has gone wrong.');
+          // TODO: visual representation of failure in the request box.
         } else {
-          this.setState({ isPending: true });
-          var pushHistory = function() {
             var snapshotId = res.body.id;
             browserHistory.push({ pathname: '/snapshots/' + snapshotId });
-          }
-          setTimeout(pushHistory, 5000);
         }
       });
-
     this.setState({ url: '' });
-  },
-  renderPending: function() {
-    if (this.state.isPending)
-      return (<h5>Processing your request...</h5>);
   },
   render: function() {
     return(
@@ -68,7 +60,6 @@ export default React.createClass({
           <button className="btn btn-default" type="submit"><i className="fa fa-cloud-download" aria-hidden="true"></i></button>
         </div> {/*input-group-btn*/}
         </div> {/*form-group*/}
-        {this.renderPending()}
       </form>
     );
   }
