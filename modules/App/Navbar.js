@@ -13,13 +13,12 @@ export default React.createClass({
           </div> {/*navbar-header*/}
             <ul className="nav navbar-nav">
               <li><Link to="/">Home</Link></li>
-              <li><Link to="#">Captures</Link></li>
+              <li><Link to="/snapshots">Snapshots</Link></li>
               <li><Link to="/about">About</Link></li>
             </ul>
             <div className="pull-right">
               <SearchBox />
             </div>{/*pull-right*/}
-
         </nav>
       </div>
     )

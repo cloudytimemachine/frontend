@@ -5,14 +5,16 @@ var moment = require('moment')
 
 export default React.createClass({
   render: function() {
-    var timeAgo =  moment(this.props.createdAt).fromNow();
-    var captureLink = '/capture/' + this.props.id;
+    // console.log(this.props.capture);
+    const capture = this.props.capture;
+    const timeAgo =  moment(capture.createdAt).fromNow();
+    var captureLink = '/snapshot/' + capture.id;
+
     return(
       <tr className="capture">
         <td>{timeAgo}</td>
-        <td>{this.props.href}</td>
-        <td>{this.props.path}</td>
-        <td><Link to={captureLink}><img src={this.props.thumb} width="200px"/></Link></td>
+        <td>{capture.host}</td>
+        <td><Link to={captureLink}><img src={capture.thumbnailImage} width="200px"/></Link></td>
       </tr>
       )
   }
