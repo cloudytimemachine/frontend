@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default React.createClass({
+class FooterSocialButtons extends React.Component {
   render() {
     const shareUrl = window.location.href;
     const title = document.title;
@@ -15,5 +15,7 @@ export default React.createClass({
         <a aria-label="pinterest" href={pinterestUrl} target="_blank"><i aria-hidden="true" className="fa fa-pinterest-p"></i></a>
       </div>
     );
-  },
-});
+  }
+}
+
+export default FooterSocialButtons;

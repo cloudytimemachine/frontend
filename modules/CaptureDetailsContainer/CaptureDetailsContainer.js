@@ -23,6 +23,25 @@ const CaptureMetaInformation = React.createClass({
   }
 });
 
+class ProcessingScreen extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    var spinnerSwitcher = () => {
+      console.log(this.props);
+      if (this.props.snapshotStatus != 'SUCCESSFUL')
+        return (<div className="processing-screen">
+                  <img src="/images/gears.svg" alt="Processing..." />
+                  <h3>Processing your snapshot...</h3>
+                </div>
+          );
+    }
+    return <div>{spinnerSwitcher()}</div>;
+  }
+};
+
 export default React.createClass({
   loadDetailsFromServer: function() {
     var url = API_URL() +'/snapshots/' + this.props.id
@@ -30,8 +49,11 @@ export default React.createClass({
       .get(url)
       .set('Content-Type', 'application/json')
       .end((err, res) => {
-        console.log(res.body);
-        this.setState({data: res.body})
+        console.log(res);
+        if (res.body.status == 'SUCCESSFUL') {
+          this.setState({data: res.body})
+          this.setState({snapshotStatus: 'SUCCESSFUL'});
+        }
       });
   },
   getInitialState: function() {
@@ -39,12 +61,21 @@ export default React.createClass({
   },
   componentDidMount: function() {
     this.loadDetailsFromServer();
+    var x = setInterval(() => {
+      this.loadDetailsFromServer();
+      if (this.state.snapshotStatus=='SUCCESSFUL') {
+        clearInterval(x);
+      }
+      console.log(this.state);
+    }, 1000);
   },
   render: function() {
     var timeAgo =  moment(this.state.data['createdAt']).fromNow();
     var imgLink = this.state.data['originalImage'];
+    console.log('snapshot status' + this.state.snapshotStatus);
     return(
       <div>
+      <ProcessingScreen snapshotStatus={this.state.snapshotStatus} />
        <img className="captureDetails" src={imgLink} />
        <CaptureMetaInformation
         createdAt={timeAgo}
