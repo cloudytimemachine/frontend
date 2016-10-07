@@ -5,6 +5,9 @@ metadata:
   labels:
     app: frontend
 spec:
+  strategy:
+    type: RollingUpdate
+    maxUnavailable: 0
   template:
     metadata:
       labels:
