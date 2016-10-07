@@ -2,6 +2,13 @@ import React from 'react'
 import { browserHistory } from 'react-router'
 import request from 'superagent'
 
+function API_URL () {
+  if (process.env.NODE_ENV === 'production') {
+    return 'http://api/api';
+  }
+  return '/api';
+};
+
 export default React.createClass({
   getInitialState: function() {
     return { url: '', isPending: false };
@@ -18,7 +25,7 @@ export default React.createClass({
     if (!url) {
       return;
     }
-    var apiUrl = '/api/snapshots'
+    var apiUrl = API_URL() + '/snapshots'
     console.log('Requesting capture of ' + url + ' to ' + apiUrl);
 
     request

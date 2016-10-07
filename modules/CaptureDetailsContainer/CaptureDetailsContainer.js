@@ -2,9 +2,16 @@ import React from 'react'
 import request from 'superagent'
 import moment from 'moment'
 
+function API_URL () {
+  if (process.env.NODE_ENV === 'production') {
+    return 'http://api/api';
+  }
+  return '/api';
+};
 
 const CaptureMetaInformation = React.createClass({
   render: function() {
+    console.log(this.props);
     return(
       <div>
         <p>ID: {this.props.id}</p>
@@ -18,7 +25,7 @@ const CaptureMetaInformation = React.createClass({
 
 export default React.createClass({
   loadDetailsFromServer: function() {
-    var url = '/api/snapshots/' + this.props.id
+    var url = API_URL() +'/snapshots/' + this.props.id
     request
       .get(url)
       .set('Content-Type', 'application/json')

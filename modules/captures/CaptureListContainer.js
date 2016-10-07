@@ -1,17 +1,25 @@
 import React from 'react'
 import CaptureList from './CaptureList'
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
-import $ from 'jquery'
+import request from 'superagent'
+
+function API_URL () {
+  if (process.env.NODE_ENV === 'production') {
+    return 'http://api/api';
+  }
+  return '/api';
+};
 
 export default React.createClass({
   loadCapturesFromServer: function() {
-    if (!this.isMounted())
-      return;
-    var url = 'http://localhost:3001/api/captures?'
-    $.getJSON(url,function(json){
-      console.log(json);
-      this.setState({data: json['captures']});
-    }.bind(this));
+    var url = API_URL() + '/snapshots'
+    //console.log(`hitting ${url}`)
+    request
+      .get(url)
+      .set('Content-Type', 'application/json')
+      .end((err, res) => {
+        this.setState({data: res.body})
+      });
   },
   getInitialState: function() {
     return { data: [],
@@ -19,34 +27,17 @@ export default React.createClass({
   },
   componentDidMount: function() {
       this.loadCapturesFromServer();
-      setInterval(this.loadCapturesFromServer, this.props.pollInterval);
   },
   handleChange: function(event) {
     this.setState({value: event.target.value});
   },
   render: function() {
-    let filteredCaptures = this.state.data.filter(
-      (capture) => {
-        return capture.domain.indexOf(this.state.value) !== -1;
-        }
-    );
+    console.log(this.state.data);
     return(
       <div>
-      <form>
-        <FormGroup>
-        <ControlLabel>Filter results</ControlLabel>
-          <FormControl
-            type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-      </form>
-      <div>
       <ul>
-        <CaptureList data={filteredCaptures}/>
+        <CaptureList data={this.state.data}/>
       </ul>
-      </div>
       </div>
       )
   }

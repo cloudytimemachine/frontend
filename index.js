@@ -12,11 +12,8 @@ var httpProxy = require('http-proxy');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var path = require('path');
-var common = require('./lib/common');
-var config = common.config();
 
-process.env.apiForwardingUrl = config.api_endpoint;
-console.log("API Forwarding URL: " + process.env.apiForwardingUrl);
+apiForwardingUrl = 'http://localhost:3001/'
 
 var app = express();
 app.use(logger('dev'));
