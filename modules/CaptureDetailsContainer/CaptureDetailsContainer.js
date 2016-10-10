@@ -79,7 +79,7 @@ export default React.createClass({
     this.loadDetailsFromServer();
     var x = setInterval(() => {
       this.loadDetailsFromServer();
-      if (this.state.snapshotStatus=='SUCCESSFUL') {
+      if (this.state.snapshotStatus=='SUCCESSFUL'||this.state.snapshotStatus=='FAILED') {
         clearInterval(x);
       }
       console.log(this.state);
