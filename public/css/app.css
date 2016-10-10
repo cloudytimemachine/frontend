@@ -139,6 +139,9 @@ fieldset > * {
   width: 70%;
 }
 
+.fa-6 {
+  font-size: 15em;
+}
 /* Snapshot list
 -------------------------------------------------- */
 /* Processing Status

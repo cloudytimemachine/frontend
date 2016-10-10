@@ -36,7 +36,6 @@ export default React.createClass({
         console.log(res.body.id);
         if (res.statusCode != 200) {
           console.log('Invalid request. Something has gone wrong.');
-          // TODO: visual representation of failure in the request box.
         } else {
             var snapshotId = res.body.id;
             browserHistory.push({ pathname: '/snapshots/' + snapshotId });

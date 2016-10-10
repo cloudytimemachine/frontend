@@ -25,22 +25,30 @@ const CaptureMetaInformation = React.createClass({
   }
 });
 
-class ProcessingScreen extends React.Component {
+class StatusInformation extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    var spinnerSwitcher = () => {
+    var statusSwitcher = () => {
       console.log(this.props);
-      if (this.props.snapshotStatus != 'SUCCESSFUL')
-        return (<div className="processing-screen">
+      switch(this.props.snapshotStatus) {
+        case 'PENDING':
+          return (<div className="processing-screen">
                   <img src="/images/gears.svg" alt="Processing..." />
                   <h3>Processing your snapshot...</h3>
-                </div>
-          );
+                </div>);
+        case 'FAILED':
+          return (<div className="processing-screen">
+                    <i className="fa fa-exclamation-triangle fa-6" aria-hidden="true"></i>
+                    <h2>Your snapshot has failed.</h2>
+                  </div>);
+        case 'SUCCESSFUL':
+          break;
+      }
     }
-    return <div>{spinnerSwitcher()}</div>;
+    return <div>{statusSwitcher()}</div>;
   }
 };
 
@@ -52,9 +60,15 @@ export default React.createClass({
       .set('Content-Type', 'application/json')
       .end((err, res) => {
         console.log(res);
-        if (res.body.status == 'SUCCESSFUL') {
-          this.setState({data: res.body})
+        if (res.body.status == 'PENDING') {
+          this.setState({snapshotStatus: 'PENDING'});
+        }
+        else if (res.body.status == 'SUCCESSFUL') {
+          this.setState({data: res.body});
           this.setState({snapshotStatus: 'SUCCESSFUL'});
+        }
+        else if (res.body.status == 'FAILED') {
+          this.setState({snapshotStatus: 'FAILED'});
         }
       });
   },
@@ -65,7 +79,7 @@ export default React.createClass({
     this.loadDetailsFromServer();
     var x = setInterval(() => {
       this.loadDetailsFromServer();
-      if (this.state.snapshotStatus=='SUCCESSFUL') {
+      if (this.state.snapshotStatus=='SUCCESSFUL'||this.state.snapshotStatus=='FAILED') {
         clearInterval(x);
       }
       console.log(this.state);
@@ -77,7 +91,7 @@ export default React.createClass({
     console.log('snapshot status' + this.state.snapshotStatus);
     return(
       <div>
-      <ProcessingScreen snapshotStatus={this.state.snapshotStatus} />
+      <StatusInformation snapshotStatus={this.state.snapshotStatus} />
        <img className="capture-details" src={imgLink} />
        <CaptureMetaInformation
         createdAt={timeAgo}

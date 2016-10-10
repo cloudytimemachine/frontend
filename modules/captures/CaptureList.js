@@ -5,7 +5,7 @@ export default React.createClass({
   render: function() {
     var captureNodes = this.props.data.map(function(capture) {
       return (
-        <Capture capture={capture}></Capture>
+        <Capture key={capture.id} capture={capture}></Capture>
         );
     });
     return (
