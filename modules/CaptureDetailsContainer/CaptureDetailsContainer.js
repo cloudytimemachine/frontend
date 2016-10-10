@@ -85,9 +85,6 @@ export default React.createClass({
       console.log(this.state);
     }, 1000);
   },
-  componentWillUnmount: function() {
-    clearInterval(x);
-  },
   render: function() {
     var timeAgo =  moment(this.state.data['createdAt']).fromNow();
     var imgLink = this.state.data['originalImage'];
