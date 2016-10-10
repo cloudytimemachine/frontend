@@ -16,7 +16,6 @@ export default React.createClass({
         <tr>
           <th>Taken</th>
           <th>URL</th>
-          <th>Path</th>
           <th>Image</th>
         </tr>
         </thead>
