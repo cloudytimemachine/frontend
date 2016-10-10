@@ -4,8 +4,8 @@ import { Link } from 'react-router'
 export default React.createClass({
   render() {
     return (
-      <div>
-        <h3>Cloudy Time Machine LOGO Placeholder</h3>
+      <div className="logo">
+        <h3>Cloudy Time Machine</h3>
       </div>
     )
   }
