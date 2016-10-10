@@ -2,7 +2,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import {expect} from 'chai';
 
-import Navbar from '../../modules/App/Navbar';
+import Navbar from '../../modules/Common/Navbar';
 
 describe('<Navbar/>', function () {
 

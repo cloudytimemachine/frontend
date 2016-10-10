@@ -2,7 +2,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import {expect} from 'chai';
 
-import RequestCaptureForm from '../../modules/RequestCaptureForm/RequestCaptureForm';
+import RequestCaptureForm from '../../modules/Common/RequestCaptureForm';
 
 describe('<RequestCaptureForm/>', function () {
 
