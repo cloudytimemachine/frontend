@@ -93,7 +93,9 @@ fieldset > * {
     transition: background 200ms ease-out;
 }
 
-
+.logo {
+  text-align: center;
+}
 /* Capture Details
 -------------------------------------------------- */
 
