@@ -108,6 +108,35 @@ fieldset > * {
   margin: 0 auto;
 }
 
+.meta-information {
+  display: block;
+  float: right;
+  margin: 10px 20px 0px 0px;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 28%;
+  border: 1px dotted;
+}
+
+.meta-information dl {
+  margin-bottom: 5px;
+}
+
+.meta-information dt {
+  clear: left;
+  float: left;
+  width: 80px;
+  padding-right: 10px;
+}
+
+.meta-information dd {
+  display: block;
+}
+
+.capture-details {
+  width: 70%;
+}
+
 /* Snapshot list
 -------------------------------------------------- */
 /* Processing Status

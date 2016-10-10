@@ -13,11 +13,13 @@ const CaptureMetaInformation = React.createClass({
   render: function() {
     console.log(this.props);
     return(
-      <div>
-        <p>ID: {this.props.id}</p>
-        <p>Created At: {this.props.createdAt}</p>
-        <p>Domain: {this.props.domain}</p>
-        <p>Path: {this.props.path}</p>
+      <div className="meta-information">
+        <dl>
+          <dt>ID:</dt><dd> {this.props.id} </dd>
+          <dt>Created:</dt><dd> {this.props.createdAt} </dd>
+          <dt>Domain:</dt><dd> {this.props.domain}</dd>
+          <dt>Path:</dt><dd> {this.props.path}</dd>
+        </dl>
       </div>
       );
   }
@@ -76,10 +78,10 @@ export default React.createClass({
     return(
       <div>
       <ProcessingScreen snapshotStatus={this.state.snapshotStatus} />
-       <img className="captureDetails" src={imgLink} />
+       <img className="capture-details" src={imgLink} />
        <CaptureMetaInformation
         createdAt={timeAgo}
-        domain={this.state.data['domain']}
+        domain={this.state.data['host']}
         path={this.state.data['path']}
         id={this.state.data['id']}
         />
