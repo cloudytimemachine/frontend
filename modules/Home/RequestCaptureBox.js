@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router'
-import SearchBox from '../shared_components/SearchBox'
+import RequestCaptureForm from '../Common/RequestCaptureForm'
 
 export default React.createClass({
   render() {
     return (
       <div>
-        <h4>Search previous Cloudy Captures</h4>
-        <SearchBox />
+        <h4>Request a new Cloudy Capture</h4>
+        <RequestCaptureForm />
       </div>
     )
   }

@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router'
+import SearchBox from '../Common/SearchBox'
 
 export default React.createClass({
   render() {
     return (
-      <div style={{border: '1px solid black', width: '475px',}}>
-        <p>Placeholder</p>
-
+      <div>
+        <h4>Search previous Cloudy Captures</h4>
+        <SearchBox />
       </div>
     )
   }

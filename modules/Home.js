@@ -1,9 +1,8 @@
 import React from 'react'
-import Logo from './App/Logo'
-import About from './App/About'
-import Footer from './App/Footer'
-import SearchBox from './App/SearchBox'
-import RequestCaptureBox from './App/RequestCaptureBox'
+import Logo from './Home/Logo'
+import About from './Home/About'
+import SearchBox from './Home/SearchBox'
+import RequestCaptureBox from './Home/RequestCaptureBox'
 import { Link } from 'react-router'
 
 class Home extends React.Component {
