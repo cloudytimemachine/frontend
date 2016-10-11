@@ -1,12 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router'
 
-export default React.createClass({
-  render() {
+const Logo = ({props}) => {
     return (
       <div className="logo">
         <h3>Cloudy Time Machine</h3>
       </div>
     )
   }
-})
+
+export default Logo;

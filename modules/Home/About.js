@@ -1,8 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router'
 
-export default React.createClass({
-  render() {
+const About = ({props}) => {
     return (
       <div>
         <h2>About</h2>
@@ -12,4 +10,5 @@ export default React.createClass({
       </div>
     )
   }
-})
+
+export default About;
