@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
-import Navbar from './App/Navbar'
-import FooterSocialButtons from './FooterSocialButtons'
+import Navbar from './Common/Navbar'
+import FooterSocialButtons from './Common/FooterSocialButtons'
 
 export default React.createClass({
   render() {

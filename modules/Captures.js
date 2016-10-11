@@ -1,5 +1,5 @@
 import React from 'react'
-import CaptureListContainer from './captures/CaptureListContainer'
+import CaptureListContainer from './Captures/CaptureListContainer'
 
 class Captures extends React.Component {
   render() {

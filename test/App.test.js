@@ -2,7 +2,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import {expect} from 'chai';
 
-import App from '../modules/App';
+import App from '../modules/Layout';
 
 describe('<App/>', function () {
 

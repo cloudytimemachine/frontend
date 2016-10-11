@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import SearchBox from '../shared_components/SearchBox'
+import SearchBox from './SearchBox'
 
 export default React.createClass({
   render() {
