@@ -92,7 +92,7 @@ export default React.createClass({
     return(
       <div>
       <StatusInformation snapshotStatus={this.state.snapshotStatus} />
-       <img className="capture-details" src={imgLink} />
+       <a href={imgLink} target="_blank"><img className="capture-details" src={imgLink} /></a>
        <CaptureMetaInformation
         createdAt={timeAgo}
         domain={this.state.data['host']}
