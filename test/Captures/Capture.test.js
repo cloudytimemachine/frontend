@@ -17,12 +17,12 @@ describe('<Capture />', function () {
                     "updatedAt": "2016-10-11T14:51:31.121Z" }
 
   it('returns a table row', function () {
-    let wrapper = mount(<Capture key={capture.id} capture={capture} />);
+    let wrapper = shallow(<Capture key={capture.id} capture={capture} />);
     expect(wrapper.find('tr.capture')).to.have.length(1);
   });
 
   it('should have a link to Capture Details ', function () {
-    let wrapper = mount(<Capture key={capture.id} capture={capture} />);
+    let wrapper = shallow(<Capture key={capture.id} capture={capture} />);
     expect(wrapper.find('Link')).to.have.length(1);
   });
 });
