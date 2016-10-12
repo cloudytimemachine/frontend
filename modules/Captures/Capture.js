@@ -12,7 +12,6 @@ function API_URL () {
 
 export default React.createClass({
   render: function() {
-    // console.log(this.props.capture);
     const capture = this.props.capture;
     const timeAgo =  moment(capture.createdAt).fromNow();
 
