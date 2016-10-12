@@ -1,7 +1,9 @@
 import React from 'react'
 
-class About extends React.Component{
-  render() {
-    return <div>About Cloudy Time Machine</div>
-  }
+const About = ({props}) => {
+  // Put your copy below. Make sure it's wrapped in a div or react will be unhappy.
+  // To make more complicated or interactive layouts, we can talk about
+  // what's needed!
+    return (<div>About Cloudy Time Machine</div>);
 }
+export default About;

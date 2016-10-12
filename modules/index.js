@@ -15,6 +15,7 @@ render((
       <Route component={CaptureDetails} path="/snapshots/:snapshotId" />
       <Route component={SearchResults} path="/captures/*" />
       <Route component={Captures} path="/snapshots" />
+      <Route component={About} path="/about" />
     </Route>
   </Router>
 ), document.getElementById('app'));
