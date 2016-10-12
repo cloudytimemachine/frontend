@@ -6,7 +6,7 @@ export default React.createClass({
   render() {
     return (
       <div>
-        <h4>Search previous Cloudy Captures</h4>
+        <h4>Search the history for a domain or URL</h4>
         <SearchBox />
       </div>
     )

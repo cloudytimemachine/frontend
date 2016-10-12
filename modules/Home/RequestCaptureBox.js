@@ -6,7 +6,7 @@ export default React.createClass({
   render() {
     return (
       <div>
-        <h4>Request a new Cloudy Capture</h4>
+        <h4>Archive a website</h4>
         <RequestCaptureForm />
       </div>
     )

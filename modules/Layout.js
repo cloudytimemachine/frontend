@@ -12,11 +12,11 @@ export default React.createClass({
         <footer className="footer">
           <div className="container">
             <div className="col-sm-4 pull-left">
-              <p className="text-muted">&copy; Ross Kukulinski, Eric Hole and <a href="http://github.com/cloudytimemachine">Contributors</a></p>
-            </div>
+              <p className="text-muted">&copy; <a href="https://twitter.com/rosskukulinski" target="_blank">Ross Kukulinski</a>, <a href="https://github.com/geojaz" target="_blank">Eric Hole</a> and <a href="https://github.com/orgs/cloudytimemachine/people" target="_blank">Contributors</a></p>
+            </div> {/*
             <div className="col-sm-4 pull-right">
               <FooterSocialButtons className="row content" />
-            </div>
+            </div> */}
             </div>
         </footer>
      </div>
