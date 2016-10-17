@@ -41,8 +41,8 @@ export default React.createClass({
     return (
       <div>
         <h2>Query Parameters: {this.getSearchInfo(this.props.params.splat)}</h2>
-        <CaptureList data={this.state.data} />
-        {/*<Carousel results={this.state.data} />*/}
+        {/*<CaptureList data={this.state.data} />*/}
+        <Carousel results={this.state.data} />
       </div>
     )
   }

@@ -1,7 +1,6 @@
 import React from 'react'
 import Carousel from 'nuka-carousel'
 import moment from 'moment'
-import Button from 'react-bootstrap'
 
 export default React.createClass({
   mixins: [Carousel.ControllerMixin],
@@ -29,29 +28,34 @@ export default React.createClass({
     this.setSliderState(newSlider);
   },
   getMetaData() {
-    let data = this.props.results[this.state.sliderVal];
+    /*let data = this.props.results[this.state.sliderVal];
     let timeAgo =  moment(data.createdAt).fromNow();
     return ( <div>
                 <h3> {data.domain} : {timeAgo}</h3>
                 <h4>Capture ID: {data.id} </h4>
-              </div> );
+              </div> );*/
   },
-  componentWillReceiveProps: function(nextProps) {
-    //console.log(nextProps);
-    if (nextProps.finishedLoading) {
-      //console.log(this.props.results);
-      let sliderMin = 0;
-      let length = this.props.results.length;
-      let sliderMax = length-1;
-      //let leftlabel = moment(this.props.results[0].createdAt).fromNow();
-      //let rightlabel = moment(this.props.results[length-1].createdAt).fromNow();
-      this.setState({  slideIndex: 0,
-              sliderVal: 0,
-              sliderMin: sliderMin,
-              sliderMax: sliderMax,
-              leftLabel: 0,
-              rightLabel: 0 });
-    }
+  componentWillReceiveProps: function(nextprops) {
+    if (nextprops.results)
+      this.initializeSlider(nextprops);
+  },
+  initializeSlider: function(p) {
+    console.log('initializing slider with new data from nextprops');
+    let sliderMin = 0;
+    let length = p.results.length;
+    console.log(`length: ${length}`);
+    let sliderMax = length-1;
+    console.log(`sliderMax: ${sliderMax}`);
+    let leftlabel = moment(p.results[0].createdAt).fromNow();
+    console.log(`leftLabel: ${leftlabel}`);
+    let rightlabel = moment(p.results[length-1].createdAt).fromNow();
+    console.log(`rightLabel: ${rightlabel}`);
+    this.setState({  slideIndex: 0,
+            sliderVal: 0,
+            sliderMin: sliderMin,
+            sliderMax: sliderMax,
+            leftLabel: leftlabel,
+            rightLabel: rightlabel });
   },
   render() {
     var carouselNodes = this.props.results.map(function(result) {
@@ -84,9 +88,9 @@ export default React.createClass({
           </Carousel>
           </div>
           <div className="col-sm-3">
-            {/*this.getMetaData()*/}
+            {this.getMetaData()}
           </div>
-        </div> {/*row content*/}
+        </div>
       </div>
     )
   }
