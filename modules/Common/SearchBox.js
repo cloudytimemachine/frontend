@@ -19,8 +19,7 @@ export default React.createClass({
     }
     this.setState({ url: '' });
     this.context.router.push({
-        pathname: '/captures/'+this.refs.q.value,
-        state: ({ search: true })
+        pathname: '/search?host='+this.refs.q.value,
       })
   },
   render() {
