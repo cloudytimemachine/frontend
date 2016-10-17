@@ -1,22 +1,17 @@
 import React from 'react'
 import Carousel from 'nuka-carousel'
 import moment from 'moment'
-import Button from 'react-bootstrap'
 
 export default React.createClass({
   mixins: [Carousel.ControllerMixin],
   getInitialState() {
-    let sliderMin = 0;
-    let length = this.props.results.length;
-    let sliderMax = length-1;
-    let leftlabel = moment(this.props.results[0].createdAt).fromNow();
-    let rightlabel = moment(this.props.results[length-1].createdAt).fromNow();
-    return {  slideIndex: 0,
+    return {  finished: false,
+              slideIndex: 0,
               sliderVal: 0,
-              sliderMin: sliderMin,
-              sliderMax: sliderMax,
-              leftLabel: leftlabel,
-              rightLabel: rightlabel  };
+              sliderMin: 0,
+              sliderMax: 0,
+              leftLabel: 0,
+              rightLabel: 0 }
   },
   setSliderState(val) {
     this.setState({sliderVal: val});
@@ -25,7 +20,6 @@ export default React.createClass({
   handleChange(e) {
     var oldSlider = this.state.sliderVal;
     var newSlider = e.target.value;
-    //console.log('oldSLider: '+ oldSlider);
     if (newSlider > oldSlider) {
       this.refs.carousel.nextSlide();
     } else {
@@ -34,12 +28,44 @@ export default React.createClass({
     this.setSliderState(newSlider);
   },
   getMetaData() {
-    let data = this.props.results[this.state.sliderVal];
-    let timeAgo =  moment(data.createdAt).fromNow();
-    return ( <div>
-                <h3> {data.domain} : {timeAgo}</h3>
-                <h4>Capture ID: {data.id} </h4>
-              </div> );
+    if (this.state.finished) {
+      let data = this.props.results[this.state.sliderVal];
+
+      let timeAgo =  moment(data.createdAt).fromNow();
+      return (
+            <div className="meta-information">
+            <dl>
+              <dt>ID:</dt><dd> {data.id} </dd>
+              <dt>Created:</dt><dd> {timeAgo} </dd>
+              <dt>Host:</dt><dd> {data.host}</dd>
+              <dt>Req'd Url:</dt><dd> {data.requestedUrl}</dd>
+            </dl>
+            </div>);
+    }
+    else return (<div>Loading</div>);
+  },
+  componentWillReceiveProps: function(nextprops) {
+    if (nextprops.results)
+      this.initializeSlider(nextprops);
+  },
+  initializeSlider: function(p) {
+    console.log('initializing slider with new data from nextprops');
+    let sliderMin = 0;
+    let length = p.results.length;
+    console.log(`length: ${length}`);
+    let sliderMax = length-1;
+    console.log(`sliderMax: ${sliderMax}`);
+    let leftlabel = moment(p.results[0].createdAt).fromNow();
+    console.log(`leftLabel: ${leftlabel}`);
+    let rightlabel = moment(p.results[length-1].createdAt).fromNow();
+    console.log(`rightLabel: ${rightlabel}`);
+    this.setState({  finished: true,
+            slideIndex: 0,
+            sliderVal: 0,
+            sliderMin: sliderMin,
+            sliderMax: sliderMax,
+            leftLabel: leftlabel,
+            rightLabel: rightlabel });
   },
   render() {
     var carouselNodes = this.props.results.map(function(result) {
@@ -51,34 +77,26 @@ export default React.createClass({
           return ( null );
         }
       }),
-
     }];
-
     return (
-      <div className="container-fluid">
-        <div className="row content">
-          <div className="col-sm-9">
+          <div>
+          <div className="capture-details">
           <fieldset>
-
             <input type="range" min={this.state.sliderMin} max={this.state.sliderMax} value={this.state.sliderVal} onChange={(e)=>this.handleChange(e)}/>
-          <label className="leftlabel pull-left">{this.state.leftLabel}</label>
-          <label className="rightlabel pull-right">{this.state.rightLabel}</label>
+            <label className="leftlabel pull-left">{this.state.leftLabel}</label>
+            <label className="rightlabel pull-right">{this.state.rightLabel}</label>
           </fieldset>
-
-            <Carousel
-              ref="carousel"
-              decorators={Decorators}
-              data={this.setCarouselData.bind(this, 'carousel')}
-              slideIndex={this.state.slideIndex}
-              afterSlide={newSlideIndex => this.setState({ slideIndex: newSlideIndex })}>
-              {carouselNodes}
-            </Carousel>
+          <Carousel
+            ref="carousel"
+            decorators={Decorators}
+            data={this.setCarouselData.bind(this, 'carousel')}
+            slideIndex={this.state.slideIndex}
+            afterSlide={newSlideIndex => this.setState({ slideIndex: newSlideIndex })}>
+            {carouselNodes}
+          </Carousel>
           </div>
-          <div className="col-sm-3">
-            {this.getMetaData()}
+          {this.getMetaData()}
           </div>
-        </div> {/*row content*/}
-      </div>
     )
   }
 })

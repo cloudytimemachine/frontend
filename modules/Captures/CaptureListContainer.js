@@ -13,7 +13,6 @@ function API_URL () {
 export default React.createClass({
   loadCapturesFromServer: function() {
     var url = API_URL() + '/snapshots'
-    //console.log(`hitting ${url}`)
     request
       .get(url)
       .set('Content-Type', 'application/json')
@@ -22,14 +21,10 @@ export default React.createClass({
       });
   },
   getInitialState: function() {
-    return { data: [],
-             value: '' };
+    return { data: [] };
   },
   componentDidMount: function() {
       this.loadCapturesFromServer();
-  },
-  handleChange: function(event) {
-    this.setState({value: event.target.value});
   },
   render: function() {
     console.log(this.state.data);
