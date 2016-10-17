@@ -5,7 +5,8 @@ import moment from 'moment'
 export default React.createClass({
   mixins: [Carousel.ControllerMixin],
   getInitialState() {
-    return {  slideIndex: 0,
+    return {  finished: false,
+              slideIndex: 0,
               sliderVal: 0,
               sliderMin: 0,
               sliderMax: 0,
@@ -19,7 +20,6 @@ export default React.createClass({
   handleChange(e) {
     var oldSlider = this.state.sliderVal;
     var newSlider = e.target.value;
-    //console.log('oldSLider: '+ oldSlider);
     if (newSlider > oldSlider) {
       this.refs.carousel.nextSlide();
     } else {
@@ -28,12 +28,21 @@ export default React.createClass({
     this.setSliderState(newSlider);
   },
   getMetaData() {
-    /*let data = this.props.results[this.state.sliderVal];
-    let timeAgo =  moment(data.createdAt).fromNow();
-    return ( <div>
-                <h3> {data.domain} : {timeAgo}</h3>
-                <h4>Capture ID: {data.id} </h4>
-              </div> );*/
+    if (this.state.finished) {
+      let data = this.props.results[this.state.sliderVal];
+
+      let timeAgo =  moment(data.createdAt).fromNow();
+      return (
+            <div className="meta-information">
+            <dl>
+              <dt>ID:</dt><dd> {data.id} </dd>
+              <dt>Created:</dt><dd> {timeAgo} </dd>
+              <dt>Host:</dt><dd> {data.host}</dd>
+              <dt>Req'd Url:</dt><dd> {data.requestedUrl}</dd>
+            </dl>
+            </div>);
+    }
+    else return (<div>Loading</div>);
   },
   componentWillReceiveProps: function(nextprops) {
     if (nextprops.results)
@@ -50,7 +59,8 @@ export default React.createClass({
     console.log(`leftLabel: ${leftlabel}`);
     let rightlabel = moment(p.results[length-1].createdAt).fromNow();
     console.log(`rightLabel: ${rightlabel}`);
-    this.setState({  slideIndex: 0,
+    this.setState({  finished: true,
+            slideIndex: 0,
             sliderVal: 0,
             sliderMin: sliderMin,
             sliderMax: sliderMax,
@@ -67,12 +77,10 @@ export default React.createClass({
           return ( null );
         }
       }),
-
     }];
     return (
-      <div className="container-fluid">
-        <div className="row content">
-          <div className="col-sm-9">
+          <div>
+          <div className="capture-details">
           <fieldset>
             <input type="range" min={this.state.sliderMin} max={this.state.sliderMax} value={this.state.sliderVal} onChange={(e)=>this.handleChange(e)}/>
             <label className="leftlabel pull-left">{this.state.leftLabel}</label>
@@ -87,11 +95,8 @@ export default React.createClass({
             {carouselNodes}
           </Carousel>
           </div>
-          <div className="col-sm-3">
-            {this.getMetaData()}
+          {this.getMetaData()}
           </div>
-        </div>
-      </div>
     )
   }
 })

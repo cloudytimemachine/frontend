@@ -17,8 +17,8 @@ const CaptureMetaInformation = React.createClass({
         <dl>
           <dt>ID:</dt><dd> {this.props.id} </dd>
           <dt>Created:</dt><dd> {this.props.createdAt} </dd>
-          <dt>Domain:</dt><dd> {this.props.domain}</dd>
-          <dt>Path:</dt><dd> {this.props.path}</dd>
+          <dt>Host:</dt><dd> {this.props.domain}</dd>
+          <dt>Req'd Url:</dt><dd> {this.props.requestedUrl}</dd>
         </dl>
       </div>
       );
@@ -96,7 +96,7 @@ export default React.createClass({
        <CaptureMetaInformation
         createdAt={timeAgo}
         domain={this.state.data['host']}
-        path={this.state.data['path']}
+        requestedUrl={this.state.data['requestedUrl']}
         id={this.state.data['id']}
         />
       </div>

@@ -137,6 +137,7 @@ fieldset > * {
 
 .capture-details {
   width: 70%;
+  float: left;
 }
 
 .fa-6 {
@@ -152,4 +153,14 @@ fieldset > * {
 
 td a {
   text-align: center;
+}
+
+
+/* Search Results
+-------------------------------------------------- */
+/*
+-------------------------------------------------- */
+
+.carousel {
+  width: 70%;
 }
