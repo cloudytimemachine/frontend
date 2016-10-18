@@ -1,6 +1,5 @@
 import React from 'react'
 import Carousel from './SearchResults/Carousel2'
-import Alert from './SearchResults/Alert'
 import CaptureList from './Captures/CaptureList'
 import request from 'superagent'
 
@@ -13,8 +12,9 @@ function API_URL () {
 
 export default React.createClass({
   loadCapturesFromServer: function() {
-    var url = API_URL() + '/snapshots?' + this.props.params.splat
-    //console.log(`hitting ${url}`)
+    console.log(this.props.params);
+    var url = API_URL() + '/snapshots/' + this.props.params.searchquery;
+    console.log(`hitting ${url}`)
     request
       .get(url)
       .set('Content-Type', 'application/json')
@@ -31,18 +31,17 @@ export default React.createClass({
   },
   getSearchInfo: function(query) {
     var obj = {};
-    query.replace(/([^=&]+)=([^&]*)/g, function(m, key, value) {
+    /*query.replace(/\?([^=&]+)=([^&]*)/g, function(m, key, value) {
         obj[decodeURIComponent(key)] = decodeURIComponent(value);
     });
-    console.log(obj);
+    console.log(obj);*/
     return (<div>{JSON.stringify(obj)}</div>);
   },
   render() {
     return (
       <div>
-        <h2>Query Parameters: {this.getSearchInfo(this.props.params.splat)}</h2>
-        {/*<CaptureList data={this.state.data} />*/}
-        <Carousel results={this.state.data} />
+        {/*<h2>Query Parameters: {this.getSearchInfo(this.props.params.splat)}</h2>*/}
+        <Carousel results={this.state.data.reverse()} />
       </div>
     )
   }

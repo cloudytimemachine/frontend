@@ -1,6 +1,8 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Router, Route, browserHistory } from 'react-router'
+import { Router } from 'react-router'
+import { Route } from 'react-router'
+import { browserHistory } from 'react-router'
 import Layout from './Layout'
 import About from './About'
 import Captures from './Captures'
@@ -13,7 +15,7 @@ render((
     <Route component={Layout}>
       <Route component={Home} path="/" />
       <Route component={CaptureDetails} path="/snapshots/:snapshotId" />
-      <Route component={SearchResults} path="/search?*" />
+      <Route component={SearchResults} path="/search/:searchquery" />
       <Route component={Captures} path="/snapshots" />
       <Route component={About} path="/about" />
     </Route>

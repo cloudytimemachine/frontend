@@ -19,7 +19,7 @@ export default React.createClass({
     }
     this.setState({ url: '' });
     this.context.router.push({
-        pathname: '/search?host='+this.refs.q.value,
+        pathname: '/search/?host='+this.refs.q.value,
       })
   },
   render() {
