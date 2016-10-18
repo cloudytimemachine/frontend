@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
+import { browserHistory } from 'react-router'
 
 export default React.createClass({
   getInitialState: function() {
@@ -18,9 +19,10 @@ export default React.createClass({
       return;
     }
     this.setState({ url: '' });
-    this.context.router.push({
-        pathname: '/search/?host='+this.refs.q.value,
-      })
+    browserHistory.push({
+        pathname: 'search/',
+        search: '?host='+this.refs.q.value
+      });
   },
   render() {
     return (

@@ -12,8 +12,7 @@ function API_URL () {
 
 export default React.createClass({
   loadCapturesFromServer: function() {
-    console.log(this.props.params);
-    var url = API_URL() + '/snapshots/' + this.props.params.searchquery;
+    var url = API_URL() + '/snapshots?host=' + this.props.location.query['host'];
     console.log(`hitting ${url}`)
     request
       .get(url)
@@ -34,15 +33,15 @@ export default React.createClass({
     /*query.replace(/\?([^=&]+)=([^&]*)/g, function(m, key, value) {
         obj[decodeURIComponent(key)] = decodeURIComponent(value);
     });
-    console.log(obj);*/
-    return (<div>{JSON.stringify(obj)}</div>);
+    console.log(obj);
+    return (<div>{JSON.stringify(obj)}</div>);*/
   },
   render() {
     return (
       <div>
-        {/*<h2>Query Parameters: {this.getSearchInfo(this.props.params.splat)}</h2>*/}
         <Carousel results={this.state.data.reverse()} />
       </div>
     )
   }
 })
+

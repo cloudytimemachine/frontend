@@ -14,10 +14,10 @@ render((
   <Router history={browserHistory}>
     <Route component={Layout}>
       <Route component={Home} path="/" />
-      <Route component={CaptureDetails} path="/snapshots/:snapshotId" />
-      <Route component={SearchResults} path="/search/:searchquery" />
-      <Route component={Captures} path="/snapshots" />
-      <Route component={About} path="/about" />
+      <Route component={SearchResults} path="search/" />
+      <Route component={CaptureDetails} path="snapshots/:snapshotId" />
+      <Route component={Captures} path="snapshots" />
+      <Route component={About} path="about" />
     </Route>
   </Router>
 ), document.getElementById('app'));
