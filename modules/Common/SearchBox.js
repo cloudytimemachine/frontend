@@ -20,7 +20,7 @@ export default React.createClass({
     }
     this.setState({ url: '' });
     browserHistory.push({
-        pathname: 'search/',
+        pathname: '/search/',
         search: '?host='+this.refs.q.value
       });
   },
