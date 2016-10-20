@@ -34,7 +34,7 @@
     "enzyme": "^2.4.1",
     "jsdom": "^9.5.0",
     "json-loader": "^0.5.4",
-    "k8s-scripts": "^2.1.1",
+    "k8s-scripts": "^3.0.0",
     "mocha": "^3.0.2",
     "react": "^15.3.0",
     "react-addons-test-utils": "^15.3.1",
