@@ -3,7 +3,7 @@ import React from 'react'
 const Logo = ({props}) => {
     return (
       <div className="logo">
-        <h2>Cloudy Time Machine</h2>
+        <img className="img-responsive" src="images/ctm_logo.png" alt="Cloudy Time Machine Logo" />
       </div>
     )
   }
