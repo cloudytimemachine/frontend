@@ -5,7 +5,7 @@ import SearchBox from '../Common/SearchBox'
 export default React.createClass({
   render() {
     return (
-      <div>
+      <div className="searchBox">
         <h4>Search the history for a domain or URL</h4>
         <SearchBox />
       </div>

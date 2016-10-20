@@ -30,7 +30,7 @@ body > .container {
 }
 
 .container-fluid {
-  width: 80%;
+  width: 90%;
 }
 
 .footer > .container {
@@ -94,7 +94,11 @@ fieldset > * {
 }
 
 .logo {
-  text-align: center;
+  padding-top: 15px;
+}
+
+.home .searchBox, .requestCaptureBox, .about  {
+  padding: 30px;
 }
 /* Capture Details
 -------------------------------------------------- */

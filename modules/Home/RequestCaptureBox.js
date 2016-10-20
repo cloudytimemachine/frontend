@@ -5,7 +5,7 @@ import RequestCaptureForm from '../Common/RequestCaptureForm'
 export default React.createClass({
   render() {
     return (
-      <div>
+      <div className="requestCaptureBox">
         <h4>Archive a website</h4>
         <RequestCaptureForm />
       </div>
