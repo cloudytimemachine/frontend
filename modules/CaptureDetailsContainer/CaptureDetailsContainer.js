@@ -84,6 +84,10 @@ export default React.createClass({
       }
       console.log(this.state);
     }, 1000);
+    this.setState({intervalId: x});
+  },
+  componentWillUnmount: function() {
+    clearInterval(this.state.intervalId);
   },
   render: function() {
     var timeAgo =  moment(this.state.data['createdAt']).fromNow();
