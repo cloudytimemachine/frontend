@@ -25,6 +25,13 @@ export default React.createClass({
   },
   componentDidMount: function() {
       this.loadCapturesFromServer();
+      var x = setInterval(() => {
+        this.loadCapturesFromServer();
+      }, 5000);
+      this.setState({intervalId: x});
+  },
+  componentWillUnmount: function(){
+    clearInterval(this.state.intervalId);
   },
   render: function() {
     console.log(this.state.data);
