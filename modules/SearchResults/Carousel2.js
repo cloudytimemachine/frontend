@@ -14,8 +14,8 @@ export default React.createClass({
               rightLabel: 0 }
   },
   setSliderState(val) {
-    this.setState({sliderVal: val});
-    //console.log("setting sliderState: "+ val);
+    this.setState({slideIndex: val});
+    console.log("setting slideIndex: "+ val);
   },
   handleChange(e) {
     var oldSlider = this.state.sliderVal;
@@ -29,7 +29,7 @@ export default React.createClass({
   },
   getMetaData() {
     if (this.state.finished) {
-      let data = this.props.results[this.state.sliderVal];
+      let data = this.props.results[this.state.slideIndex];
 
       let timeAgo =  moment(data.createdAt).fromNow();
       return (
@@ -60,8 +60,7 @@ export default React.createClass({
     let rightlabel = moment(p.results[length-1].createdAt).fromNow();
     console.log(`rightLabel: ${rightlabel}`);
     this.setState({  finished: true,
-            slideIndex: 0,
-            sliderVal: sliderMax,
+            slideIndex: sliderMax,
             sliderMin: sliderMin,
             sliderMax: sliderMax,
             leftLabel: leftlabel,
@@ -82,7 +81,7 @@ export default React.createClass({
           <div>
           <div className="capture-details">
           <fieldset>
-            <input type="range" min={this.state.sliderMin} max={this.state.sliderMax} value={this.state.sliderVal} onChange={(e)=>this.handleChange(e)}/>
+            <input type="range" min={this.state.sliderMin} max={this.state.sliderMax} value={this.state.slideIndex} onChange={(e)=>this.handleChange(e)}/>
             <label className="leftlabel pull-left">{this.state.leftLabel}</label>
             <label className="rightlabel pull-right">{this.state.rightLabel}</label>
           </fieldset>
@@ -90,8 +89,9 @@ export default React.createClass({
             ref="carousel"
             decorators={Decorators}
             data={this.setCarouselData.bind(this, 'carousel')}
-            slideIndex={this.state.slideIndex}
-            afterSlide={newSlideIndex => this.setState({ slideIndex: newSlideIndex })}>
+            slideIndex={parseInt(this.state.slideIndex)}
+            afterSlide={newSlideIndex => this.setState({ slideIndex: newSlideIndex })}
+            dragging={false}>
             {carouselNodes}
           </Carousel>
           </div>
