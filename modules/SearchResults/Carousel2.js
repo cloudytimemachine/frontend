@@ -61,7 +61,7 @@ export default React.createClass({
     console.log(`rightLabel: ${rightlabel}`);
     this.setState({  finished: true,
             slideIndex: 0,
-            sliderVal: 0,
+            sliderVal: sliderMax,
             sliderMin: sliderMin,
             sliderMax: sliderMax,
             leftLabel: leftlabel,
