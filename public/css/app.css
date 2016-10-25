@@ -141,7 +141,7 @@ fieldset > * {
 .capture-details {
   width: 70%;
   float: left;
-  padding-bottom: 65px;
+  padding: 0 10px 65px 10px;
 }
 
 .fa-6 {
