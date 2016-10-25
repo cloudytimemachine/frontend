@@ -17,7 +17,6 @@ body {
   height: 60px;
 }
 
-
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
@@ -142,6 +141,7 @@ fieldset > * {
 .capture-details {
   width: 70%;
   float: left;
+  padding-bottom: 65px;
 }
 
 .fa-6 {
