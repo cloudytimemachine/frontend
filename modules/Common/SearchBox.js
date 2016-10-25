@@ -23,7 +23,6 @@ export default React.createClass({
         pathname: '/search/',
         search: '?host='+this.refs.q.value
       });
-    //window.location.href=window.location.href;
   },
   render() {
     return (
