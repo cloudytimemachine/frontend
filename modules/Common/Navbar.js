@@ -9,7 +9,7 @@ export default React.createClass({
         <nav className="navbar navbar-inverse navbar-fixed-top">
 
           <div className="navbar-header">
-            <a className="navbar-brand" href="/">Cloudy Time Machine</a>
+            <Link to="/" className="navbar-brand">Cloudy Time Machine</Link>
           </div> {/*navbar-header*/}
             <ul className="nav navbar-nav">
               <li><Link to="/">Home</Link></li>

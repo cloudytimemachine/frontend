@@ -28,13 +28,9 @@ export default React.createClass({
   componentDidMount: function() {
       this.loadCapturesFromServer();
   },
-  getSearchInfo: function(query) {
-    var obj = {};
-    /*query.replace(/\?([^=&]+)=([^&]*)/g, function(m, key, value) {
-        obj[decodeURIComponent(key)] = decodeURIComponent(value);
-    });
-    console.log(obj);
-    return (<div>{JSON.stringify(obj)}</div>);*/
+  componentWillReceiveProps: function(nextprops){
+    if (this.props.location.query['host'] !== nextprops.location.query['host'])
+      setTimeout(() => { this.loadCapturesFromServer(), 1});
   },
   render() {
     return (

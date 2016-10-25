@@ -13,6 +13,6 @@ describe('<Navbar/>', function () {
 
   it('should have 3 links', function () {
     let wrapper = shallow(<Navbar />);
-    expect(wrapper.find('Link')).to.have.length(3);
+    expect(wrapper.find('Link')).to.have.length(4);
   });
 });
