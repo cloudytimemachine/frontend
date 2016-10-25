@@ -45,8 +45,7 @@ export default React.createClass({
     else return (<div>Loading</div>);
   },
   componentWillReceiveProps: function(nextprops) {
-    if (nextprops.results)
-      this.initializeSlider(nextprops);
+    this.initializeSlider(nextprops);
   },
   initializeSlider: function(p) {
     console.log('initializing slider with new data from nextprops');
