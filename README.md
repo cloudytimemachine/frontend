@@ -1,6 +1,6 @@
 # Cloudy Time Machine Frontend Service
 
-This is the frontend service for the Cloudy Time Machine (CTM) project. The CTM is a modern implementation of the [Wayback Machine, the Internet Archive](https://archive.org/). This project was developed as a proof of concept and demonstration of a relatively simple real world app in a cloud native architechture.
+This is the frontend service for the Cloudy Time Machine (CTM) project. The CTM is a modern implementation of the [Wayback Machine, the Internet Archive](https://archive.org/). This project was developed as a proof of concept and demonstration of a relatively simple real world app in a cloud native architecture.
 
 The CTM Frontend Service is the web interface for the CTM project. It provides a graphical interface to request snapshots (website archivals) and browse previous snapshots. It is intended to be run in conjunction with the rest of the CTM services.
 
