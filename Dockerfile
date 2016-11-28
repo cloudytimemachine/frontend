@@ -1,13 +1,9 @@
-FROM nginx
-
-RUN apt-get -qq update && \
-  apt-get -yqq install wget && \
-  apt-get clean
+FROM nginx:1.9.15-alpine
 
 # Remove defaults
 RUN rm /etc/nginx/conf.d/default.conf
 
-RUN wget -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.1.2/dumb-init_1.1.2_amd64
+ADD https://github.com/Yelp/dumb-init/releases/download/v1.1.2/dumb-init_1.1.2_amd64 /usr/local/bin/dumb-init
 RUN chmod +x /usr/local/bin/dumb-init
 ENTRYPOINT ["/usr/local/bin/dumb-init", "--"]
 
