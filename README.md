@@ -4,18 +4,8 @@ This is the frontend service for the Cloudy Time Machine (CTM) project. The CTM 
 
 The CTM Frontend Service is the web interface for the CTM project. It provides a graphical interface to request snapshots (website archivals) and browse previous snapshots. It is intended to be run in conjunction with the rest of the CTM services.
 
-## Development Enviroment Setup
-
 ### Install required software:
   * nodejs
-  * redis
-  * rethinkdb
-
-### To interact with the deployment cluster you will also need to install:
-  * Docker
-  * Google Cloud SDK
-  * kubectl
-  * And contact [Ross](@rosskukulinski) for access to the credentials
 
 ### Getting started
 
